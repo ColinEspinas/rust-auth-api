@@ -5,6 +5,8 @@ use serde::{Deserialize};
 #[derive(Debug, Deserialize)]
 struct MongoDatabase {
     name: String,
+    address: String,
+    port: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -41,6 +43,14 @@ impl Settings {
     }
 
     pub fn database_name(&self) -> &str {
-      &self.database.name
+      self.database.name.as_str()
+    }
+
+    pub fn database_address(&self) -> &str {
+      self.database.address.as_str()
+    }
+
+    pub fn database_port(&self) -> &str {
+      self.database.port.as_str()
     }
 }

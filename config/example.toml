@@ -1,0 +1,4 @@
+[database]
+name = "rust-auth"
+address = "localhost"
+port = "27017"

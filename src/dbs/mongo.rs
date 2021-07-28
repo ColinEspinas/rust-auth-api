@@ -15,10 +15,10 @@ impl Connection {
     self.database.clone()
   }
 
-  pub async fn new(database_name: &str) -> Connection {
+  pub async fn new(address: &str, port: &str, database_name: &str) -> Connection {
 
     // Parse a connection string into an options struct.
-    let mut client_options = ClientOptions::parse("mongodb://localhost:27017").await.expect("Failed to parse options!");
+    let mut client_options = ClientOptions::parse(format!("mongodb://{}:{}", address, port)).await.expect("Failed to parse options!");
 
     // Manually set an option.
     client_options.app_name = Some("My App".to_string());
